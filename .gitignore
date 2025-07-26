@@ -28,3 +28,73 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+
+# Dependency directories
+/vendor/
+/node_modules/
+
+# Environment files
+.env*
+!.env.example
+
+# Logs
+*.log
+/storage/logs/*
+!storage/logs/.gitkeep
+
+# Cache and config files
+/bootstrap/cache/*
+/storage/framework/cache/*
+/storage/framework/views/*
+/storage/framework/sessions/*
+/config/*.php
+
+# Debug files
+.phpunit.result.cache
+.nova/
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Build assets
+/public/css/
+/public/js/
+/public/build/
+/public/hot
+/public/storage
+/public/mix-manifest.json
+
+# Testing
+/coverage/
+
+# Deployment
+/.env.backup
+/.phpunit.cache
+/docker-compose.override.yml
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Local development
+Homestead.yaml
+Homestead.json
+/.vagrant
+
+.env*
+.env.example
+
+/storage/framework/*
+!storage/framework/.gitkeep
+
+/public/build/
+/public/hot
+
+.vscode/
+.idea/
