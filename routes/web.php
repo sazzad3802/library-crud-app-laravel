@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/', [BookController::class, 'index']);
+Route::get('/books', [BookController::class, 'index']);
 
 
 Route::resource('books', BookController::class);
