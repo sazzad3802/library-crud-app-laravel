@@ -53,7 +53,7 @@ class BookApiController extends Controller
     public function show(string $id)
     {
         $book = Book::find($id);
-        
+
         if (!$book) {
             return response()->json(['message' => 'Book not found'], 404);
         }
@@ -67,7 +67,7 @@ class BookApiController extends Controller
     public function update(Request $request, string $id)
     {
         $book = Book::find($id);
-        
+
         if (!$book) {
             return response()->json(['message' => 'Book not found'], 404);
         }
@@ -98,7 +98,7 @@ class BookApiController extends Controller
     public function destroy(string $id)
     {
         $book = Book::find($id);
-        
+
         if (!$book) {
             return response()->json(['message' => 'Book not found'], 404);
         }
