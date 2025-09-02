@@ -12,6 +12,8 @@ Route::prefix('v1')->group(function () {
 
     // Route::get('common-data/type/{type}', [CommonDataController::class, 'getCommonData']);
     Route::post('common-data', [CommonDataController::class, 'getCommonData']);
+    Route::post('common-data/create', [CommonDataController::class, 'store']);
+
     Route::post('common-data/regions', [CommonDataController::class, 'getRegions']);
 
     Route::get('common-data/master', [CommonDataController::class, 'getMasterData']);
@@ -20,7 +22,7 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('auth')->group(function () {
         Route::post('register', [AuthController::class, 'register']);
-        Route::post('login', [AuthController::class, 'login']);
+        Route::post('login', [AuthController::class, 'login']); 
 
         Route::middleware('auth:api')->group(function () {
             Route::post('logout', [AuthController::class, 'logout']);

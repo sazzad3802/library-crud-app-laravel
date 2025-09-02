@@ -1,0 +1,344 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your API",
+        "description": "Interactive docs for Your API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/v1",
+            "description": "Local development server"
+        },
+        {
+            "url": "https://staging.example.com/api",
+            "description": "Staging server"
+        },
+        {
+            "url": "https://api.example.com",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/common-data/master": {
+            "get": {
+                "tags": [
+                    "Common Data"
+                ],
+                "summary": "Fetch grouped master data",
+                "description": "Returns data grouped by type (programs, donors, banks, etc.)",
+                "operationId": "d4324c846c2f03272092f05b32a60ae7",
+                "responses": {
+                    "200": {
+                        "description": "Grouped data by categories",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "programTypes": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "programs": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "donors": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "designations": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "psuMailGroups": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "fileTypes": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "seniorMailGroups": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "bankAccountTypes": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "banks": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "currencies": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "years": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "operationMailGroups": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        },
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CommonData"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/common-data": {
+            "post": {
+                "tags": [
+                    "Common Data"
+                ],
+                "summary": "Fetch common data by type",
+                "operationId": "baf8af9235fa9ca2a8be02ce206243c4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "type"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "example": "PRG"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Records found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CommonData"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing type"
+                    },
+                    "404": {
+                        "description": "No records found"
+                    }
+                }
+            }
+        },
+        "/common-data/regions": {
+            "post": {
+                "tags": [
+                    "Common Data"
+                ],
+                "summary": "Fetch regions by type and parent ID",
+                "operationId": "1b3ae03a3f5d635dd3fd9f261249a444",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "type",
+                                    "parentId"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "example": "RGN"
+                                    },
+                                    "parentId": {
+                                        "type": "integer",
+                                        "example": 5
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Records found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CommonData"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing parameters"
+                    },
+                    "404": {
+                        "description": "No records found"
+                    }
+                }
+            }
+        },
+        "/common-data/{id}": {
+            "get": {
+                "tags": [
+                    "Common Data"
+                ],
+                "summary": "Fetch a record by ID",
+                "operationId": "8ee083146babe26b38d20c444976460b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonData"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CommonData": {
+                "required": [
+                    "id",
+                    "type",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "pid": {
+                        "type": "integer",
+                        "example": null,
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "PRG"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Education Program"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Program related to education",
+                        "nullable": true
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "int_value": {
+                        "type": "integer",
+                        "example": 5,
+                        "nullable": true
+                    },
+                    "string_value": {
+                        "type": "string",
+                        "example": "Extra info",
+                        "nullable": true
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 23.8103,
+                        "nullable": true
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 90.4125,
+                        "nullable": true
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "example": 10,
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Common Data",
+            "description": "Endpoints for managing common data (programs, donors, banks, etc.)"
+        }
+    ]
+}
